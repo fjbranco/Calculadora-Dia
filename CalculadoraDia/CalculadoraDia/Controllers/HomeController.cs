@@ -78,12 +78,13 @@ namespace CalculadoraDia.Controllers
                     // marcar que já não preciso de limpar o vsior
                     limpaVisor = "Nao";
                     break;
-                case "+/-":
+                case "⁺∕₋":
                     // faz a inversão do valor no inversor
                     if (visor.StartsWith('-'))
                         visor = visor.Substring(1);
                     else
-                        visor = "-" + visor;
+                        if(visor!="0")
+                            visor = "-" + visor;
                     break;
                 case ",":
                     // faz a gestão da parte decimal do número no visor
@@ -93,7 +94,7 @@ namespace CalculadoraDia.Controllers
                 case "+":
                 case "-":
                 case "x":
-                case ":":
+                case "÷":
                 case "=":
                     limpaVisor="Sim"; // marcar o visor como sendo necessário o seu reinício
                     if (primeiroOperador != "Sim")
@@ -114,7 +115,7 @@ namespace CalculadoraDia.Controllers
                             case "x":
                                 visor = operando1 * operando2 + "";
                                 break;
-                            case ":":
+                            case "÷":
                                 visor = operando1 / operando2 + "";
                                 break;
                         }
